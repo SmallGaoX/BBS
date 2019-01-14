@@ -61,6 +61,11 @@ class Article(models.Model):
     title = models.CharField(max_length=50, verbose_name='文章标题')
     desc = models.CharField(max_length=255, verbose_name='文章描述')
     create_time = models.DateTimeField(verbose_name='创建时间')
+
+    comment_count = models.IntegerField(default=0)
+    up_count = models.IntegerField(default=0)
+    down_count = models.IntegerField(default=0)
+
     category = models.ForeignKey(to='Category',to_field='nid',null=True)
     user = models.ForeignKey(verbose_name='作者', to='UserInfo', to_field='nid')
     tags = models.ManyToManyField(
